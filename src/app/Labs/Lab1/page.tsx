@@ -330,11 +330,11 @@ export default function Lab1() {
         to get dummy text
         <br />
         <h4>Github tag</h4>
-        Please 
+        Please{" "}
         <a href="https://github.com/Aunnieo/kanbaz-next-js" id="wd-github">
           click here
-        </a>
-      for my github
+        </a>{" "}
+        for my GitHub for my github
         <br />
       </div>
     </div>
