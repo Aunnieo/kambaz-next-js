@@ -22,7 +22,6 @@ import BootstrapLists from "./BootstrapLists";
 import BootstrapForms from "./BootstrapForm";
 import BootstrapNavigation from "./BootstrapNavigation";
 import TOC from "../TOC";
-import Image from "next/image"; // Use Next.js Image for optimization
 
 export default function Lab2() {
   return (

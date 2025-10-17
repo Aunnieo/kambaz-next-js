@@ -1,31 +1,23 @@
-
-
-
 import { ReactNode } from "react";
 import { FaAlignJustify } from "react-icons/fa";
 import CourseNavigation from "./Navigation";
+import { use } from "react";
 
-export default async function CoursesLayout({
+export default function CoursesLayout({
   children,
   params,
-}: Readonly<{ children: ReactNode; params: { cid: string } }>) {
-  const { cid } = await params;
+}: Readonly<{ children: ReactNode; params: Promise<{ cid: string }> }>) {
+  const { cid } = use(params);
 
-  const sidebarWidth = 110; 
+  const sidebarWidth = 110;
 
   return (
     <div id="wd-courses" className="d-flex">
-      {/* Left sidebar fix */}
       <div className="d-none d-md-block">
         <CourseNavigation />
       </div>
 
-      {/* Main content & right sidebar */}
-      <div
-        className="flex-fill d-flex"
-        style={{ marginLeft: sidebarWidth }}
-      >
-        {/* Main content */}
+      <div className="flex-fill d-flex" style={{ marginLeft: sidebarWidth }}>
         <div className="flex-fill p-3">
           <h2 className="text-danger">
             <FaAlignJustify className="me-4 fs-4 mb-1" />
