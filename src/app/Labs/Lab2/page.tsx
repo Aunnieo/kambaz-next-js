@@ -21,7 +21,6 @@ import BootstrapForms from "./BootstrapForm";
 import BootstrapNavigation from "./BootstrapNavigation";
 import TOC from "../TOC";
 
-
 export default function Lab2() {
   return (
     <Container>
@@ -29,8 +28,8 @@ export default function Lab2() {
       <h3>Styling with the STYLE attribute</h3>
       <p>
         Style attribute allows configuring look and feel right on the element.
-        Although it's very convenient it is considered bad practice and you
-        should avoid using the style attribute
+        Although it&apos;s very convenient, it is considered bad practice should
+        avoid using the style attribute
       </p>
 
       <div id="wd-css-id-selectors">
@@ -40,15 +39,15 @@ export default function Lab2() {
           name, e.g., P, we can refer to a specific element by its ID
         </p>
         <p id="wd-id-selector-2">
-          Here's another paragraph using a different ID and a different look and
-          feel
+          Here&apos;s another paragraph using a different ID and a different
+          look and feel
         </p>{" "}
         <p className="wd-class-selector">
-          Instead of using IDs to refer to elements, you can use an element's
-          CLASS attribute
+          Instead of using IDs to refer to elements, you can use an
+          element&apos;s CLASS attribute
         </p>
         <h4 className="wd-class-selector">
-          This heading has same style as paragraph above
+          This heading has the same style as the paragraph above{" "}
         </h4>
         <div id="wd-css-document-structure">
           <div className="wd-selector-1">
@@ -57,7 +56,7 @@ export default function Lab2() {
               Selectors can be combined to refer elements in particular places
               in the document
               <p className="wd-selector-3">
-                This paragraph's red background is referenced as
+                This paragraph&apos;s red background is referenced as
                 <br />
                 .selector-2 .selector3
                 <br />
@@ -74,7 +73,6 @@ export default function Lab2() {
           </div>
         </div>
       </div>
-
 
       <ForegroundColors />
       <BackgroundColors />
@@ -96,8 +94,6 @@ export default function Lab2() {
       <BootstrapForms />
       <BootstrapNavigation />
       <TOC />
-
-
     </Container>
   );
 }

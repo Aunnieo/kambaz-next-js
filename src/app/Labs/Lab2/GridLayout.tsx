@@ -1,4 +1,4 @@
-export default function () {
+export default function GridLayout() {
   return (
     <div id="wd-css-grid-layout">
       <div id="wd-css-left-right-layout">

@@ -3,16 +3,11 @@ export default function Positions() {
     <div id="wd-css-position-relative">
       <h2>Relative</h2>
       <div className="wd-bg-color-gray">
-        <div
-          className="wd-bg-color-yellow 
-                    wd-dimension-portrait"
-        >
+        <div className="wd-bg-color-yellow wd-dimension-portrait">
           <div className="wd-pos-relative-nudge-down-right">Portrait</div>
         </div>
         <div
-          className="wd-pos-relative-nudge-up-right 
-        wd-bg-color-blue wd-fg-color-white 
-        wd-dimension-landscape"
+          className="wd-pos-relative-nudge-up-right wd-bg-color-blue wd-fg-color-white wd-dimension-landscape"
         >
           Landscape
         </div>
@@ -26,8 +21,7 @@ export default function Positions() {
             Portrait
           </div>
           <div
-            className="wd-pos-absolute-50-50 wd-bg-color-blue wd-fg-color-white 
-         wd-dimension-landscape"
+            className="wd-pos-absolute-50-50 wd-bg-color-blue wd-fg-color-white wd-dimension-landscape"
           >
             Landscape
           </div>
@@ -46,13 +40,13 @@ export default function Positions() {
 
       <div id="wd-css-position-fixed">
         <h2>Fixed position</h2>
-        Checkout the blue square that says "Fixed position" stuck all the way on
-        the right and half way down the page. It doesn't scroll with the rest of
-        the page. Its position is "Fixed".
+        <p>
+          Checkout the blue square that says &quot;Fixed position&quot; stuck all the
+          way on the right and halfway down the page. It doesn&apos;t scroll with
+          the rest of the page. Its position is &quot;Fixed&quot;.
+        </p>
         <div
-          className="wd-pos-fixed 
-    wd-dimension-square wd-bg-color-blue 
-    wd-fg-color-white"
+          className="wd-pos-fixed wd-dimension-square wd-bg-color-blue wd-fg-color-white"
         >
           Fixed position
         </div>
