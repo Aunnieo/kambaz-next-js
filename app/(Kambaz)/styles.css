@@ -1,0 +1,79 @@
+body   {
+  margin: 0;
+  padding: 0;
+}
+
+body * {
+  font-family: Arial,
+  Helvetica, sans-serif;
+}
+
+@media (min-width: 768px) {
+  #wd-kambaz .wd-main-content-offset {
+    padding-left: 140px !important;
+  }
+}
+
+.list-group.wd > .list-group-item.active {
+  color: black;
+  background-color: white;
+  border-left: 3px solid black !important;
+}
+
+.btn-secondary {
+  --bs-btn-color: #000 !important;
+  --bs-btn-bg: #c7cdd1 !important;
+  --bs-btn-border-color: #c7cdd1 !important;
+  --bs-btn-hover-color: #fff !important;
+}
+.bg-secondary {
+  --bs-secondary-rgb: 199, 205, 209;
+}
+.list-group-item {
+  --bs-list-group-border-color: gray;
+}
+.wd-lesson {
+  border-left: 3px solid green !important;
+}
+
+
+
+/* Container for the assignments list */
+#wd-assignments-container {
+  position: relative;
+  padding-left: 20px; /* space for green line */
+}
+
+/* Green vertical line */
+#wd-assignments-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  width: 4px;
+  background-color: green;
+}
+
+/* Individual assignment items */
+.wd-assignment-item {
+  border-left: none;
+  border-top: 1px solid #ccc; /* gray separator */
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+/* Remove top border from first item */
+.wd-assignment-item:first-child {
+  border-top: none;
+}
+
+/* Right-side buttons */
+.wd-assignment-buttons .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
