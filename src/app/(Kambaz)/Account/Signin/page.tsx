@@ -3,58 +3,34 @@
 import Link from "next/link";
 import { Form, Button, Card } from "react-bootstrap";
 
-export default function Profile() {
+export default function Signin() {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
-      <Card className="p-4 shadow" style={{ width: "400px" }}>
-        <h3 className="mb-4 text-center">Profile</h3>
+      {/* Centered Card */}
+      <Card className="p-4 shadow" style={{ width: "350px" }}>
+        <h3 className="mb-4 text-center">Sign in</h3>
 
-        <Form>
-          {/* Username */}
-          <Form.Group className="mb-3" controlId="wd-username">
-            <Form.Control type="text" defaultValue="alice" placeholder="Username" />
-          </Form.Group>
+        {/* Username */}
+        <Form.Group className="mb-3" controlId="wd-username">
+          <Form.Control type="text" placeholder="Username" />
+        </Form.Group>
 
-          {/* Password */}
-          <Form.Group className="mb-3" controlId="wd-password">
-            <Form.Control type="password" defaultValue="123" placeholder="Password" />
-          </Form.Group>
+        {/* Password */}
+        <Form.Group className="mb-3" controlId="wd-password">
+          <Form.Control type="password" placeholder="Password" />
+        </Form.Group>
 
-          {/* First Name */}
-          <Form.Group className="mb-3" controlId="wd-firstname">
-            <Form.Control type="text" defaultValue="Alice" placeholder="First Name" />
-          </Form.Group>
+        {/* Sign In Button */}
+        <Link href="/Dashboard" className="btn btn-primary w-100 mb-3">
+          Sign in
+        </Link>
 
-          {/* Last Name */}
-          <Form.Group className="mb-3" controlId="wd-lastname">
-            <Form.Control type="text" defaultValue="Wonderland" placeholder="Last Name" />
-          </Form.Group>
-
-          {/* Date of Birth */}
-          <Form.Group className="mb-3" controlId="wd-dob">
-            <Form.Control type="date" defaultValue="2000-01-01" />
-          </Form.Group>
-
-          {/* Email */}
-          <Form.Group className="mb-3" controlId="wd-email">
-            <Form.Control type="email" defaultValue="alice@wonderland" placeholder="Email" />
-          </Form.Group>
-
-          {/* Role */}
-          <Form.Group className="mb-3" controlId="wd-role">
-            <Form.Select defaultValue="FACULTY">
-              <option value="USER">User</option>
-              <option value="ADMIN">Admin</option>
-              <option value="FACULTY">Faculty</option>
-              <option value="STUDENT">Student</option>
-            </Form.Select>
-          </Form.Group>
-
-          {/* Sign Out Button */}
-          <Link href="/Account/Signin" className="btn btn-danger w-100 mt-3">
-            Sign Out
+        {/* Signup Link */}
+        <div className="text-center">
+          <Link href="/Account/Signup" className="text-decoration-none">
+            Sign up
           </Link>
-        </Form>
+        </div>
       </Card>
     </div>
   );
