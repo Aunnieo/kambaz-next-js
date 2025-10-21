@@ -1,0 +1,58 @@
+[
+  {
+    "cid": "1234",
+    "title": "CS1234 React JS",
+    "subtitle": "Full Stack Software Developer",
+    "credits": 4,
+    "description": "Covers building dynamic web applications using React.js, component-based architecture, and API integration."
+  },
+  {
+    "cid": "3308",
+    "title": "SCHM 3308",
+    "subtitle": "Supply Chain Analytics",
+    "credits": 4,
+    "description": "Introduces data-driven decision-making in supply chain management, using Excel and Python for optimization."
+  },
+  {
+    "cid": "3305",
+    "title": "SCHM 3305",
+    "subtitle": "Sourcing and Negotiation",
+    "credits": 4,
+    "description": "Explores supplier selection, negotiation tactics, and global sourcing strategies for modern supply chains."
+  },
+  {
+    "cid": "Fundies1",
+    "title": "CS Fundies 1",
+    "subtitle": "Foundations of CS 1",
+    "credits": 4,
+    "description": "Teaches core programming concepts in Python, including loops, functions, and problem decomposition."
+  },
+  {
+    "cid": "Fundies2",
+    "title": "CS Fundies 2",
+    "subtitle": "Foundations of CS 2",
+    "credits": 4,
+    "description": "Builds on Fundies 1 with data structures, recursion, and object-oriented programming concepts."
+  },
+  {
+    "cid": "DiscreteMaths",
+    "title": "MATH 2301",
+    "subtitle": "Discrete Mathematics",
+    "credits": 4,
+    "description": "Introduces logic, proofs, sets, combinatorics, and graph theory—mathematical foundations for computer science."
+  },
+  {
+    "cid": "Strategy",
+    "title": "MGMT 4100",
+    "subtitle": "Strategy in Action",
+    "credits": 4,
+    "description": "Focuses on how companies formulate and implement strategies to gain competitive advantage in dynamic markets."
+  },
+  {
+    "cid": "OrgB",
+    "title": "MGMT 2200",
+    "subtitle": "Organizational Behavior",
+    "credits": 4,
+    "description": "Examines human behavior in organizations with an emphasis on motivation, leadership, and team dynamics."
+  }
+]

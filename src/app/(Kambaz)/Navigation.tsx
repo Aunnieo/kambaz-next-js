@@ -1,16 +1,30 @@
+"use client";
 import { AiOutlineDashboard } from "react-icons/ai";
-import { IoCalendarOutline } from "react-icons/io5";
-import { LiaBookSolid } from "react-icons/lia";
+import { IoCalendarOutline, IoTimeOutline } from "react-icons/io5";
+import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
-import { ListGroup, ListGroupItem } from "react-bootstrap";
-import { IoTimeOutline } from "react-icons/io5";
 import { GrCluster } from "react-icons/gr";
-import { MdOutlineGroups } from "react-icons/md";
-import { MdHelpOutline } from "react-icons/md";
-
+import { MdOutlineGroups, MdHelpOutline } from "react-icons/md";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
+
 
 export default function KambazNavigation() {
+  const pathname = usePathname();
+
+  const links = [
+    { label: "Dashboard", path: "/Dashboard", icon: AiOutlineDashboard },
+    { label: "Courses", path: "/Dashboard", icon: LiaBookSolid }, // intentionally points to Dashboard
+    { label: "Calendar", path: "/Calendar", icon: IoCalendarOutline },
+    { label: "Inbox", path: "/Inbox", icon: FaInbox },
+    { label: "Labs", path: "/Labs", icon: LiaCogSolid },
+    { label: "History", path: "/History", icon: IoTimeOutline },
+    { label: "Studio", path: "/Studio", icon: GrCluster },
+    { label: "Groups", path: "/Groups", icon: MdOutlineGroups },
+    { label: "Help", path: "/Help", icon: MdHelpOutline },
+  ];
+
   return (
     <ListGroup
       id="wd-kambaz-navigation"
@@ -31,105 +45,37 @@ export default function KambazNavigation() {
       <ListGroupItem className="border-0 bg-black text-center py-2">
         <Link
           href="/Account"
-          className="text-white text-decoration-none d-block"
+          className={`text-decoration-none d-block ${
+            pathname.includes("Account") ? "text-danger" : "text-white"
+          }`}
         >
-          <FaRegCircleUser className="fs-4 text-white mb-1" />
+          <FaRegCircleUser
+            className={`fs-4 mb-1 ${
+              pathname.includes("Account") ? "text-danger" : "text-white"
+            }`}
+          />
           <div style={{ fontSize: "0.8rem" }}>Account</div>
         </Link>
       </ListGroupItem>
 
-      {/* Dashboard */}
-      <ListGroupItem className="border-0 bg-black text-center py-2 active">
-        <Link
-          href="/Dashboard"
-          className="text-danger text-decoration-none d-block"
-        >
-          <AiOutlineDashboard className="fs-4 text-danger mb-1" />
-          <div style={{ fontSize: "0.8rem" }}>Dashboard</div>
-        </Link>
-      </ListGroupItem>
-
-      {/* Courses */}
-      <ListGroupItem className="border-0 bg-black text-center py-2">
-        <Link
-          href="/Courses"
-          className="text-danger text-decoration-none d-block"
-        >
-          <LiaBookSolid className="fs-4 text-danger mb-1" />
-          <div style={{ fontSize: "0.8rem" }}>Courses</div>
-        </Link>
-      </ListGroupItem>
-
-      {/* Calendar */}
-      <ListGroupItem className="border-0 bg-black text-center py-2">
-        <Link
-          href="/Calendar"
-          className="text-danger text-decoration-none d-block"
-        >
-          <IoCalendarOutline className="fs-4 text-danger mb-1" />
-          <div style={{ fontSize: "0.8rem" }}>Calendar</div>
-        </Link>
-      </ListGroupItem>
-
-      {/* Inbox */}
-      <ListGroupItem className="border-0 bg-black text-center py-2">
-        <Link
-          href="/Inbox"
-          className="text-danger text-decoration-none d-block"
-        >
-          <FaInbox className="fs-4 text-danger mb-1" />
-          <div style={{ fontSize: "0.8rem" }}>Inbox</div>
-        </Link>
-      </ListGroupItem>
-
-      {/* Labs */}
-      <ListGroupItem className="border-0 bg-black text-center py-2">
-        <Link href="/Labs" className="text-danger text-decoration-none d-block">
-          <LiaBookSolid className="fs-4 text-danger mb-1" />
-          <div style={{ fontSize: "0.8rem" }}>Labs</div>
-        </Link>
-      </ListGroupItem>
-
-      {/* History */}
-      <ListGroupItem className="border-0 bg-black text-center py-2">
-        <Link
-          href="/History"
-          className="text-danger text-decoration-none d-block"
-        >
-          <IoTimeOutline className="fs-4 text-danger mb-1" />
-          <div style={{ fontSize: "0.8rem" }}>History</div>
-        </Link>
-      </ListGroupItem>
-
-      {/* Studio */}
-      <ListGroupItem className="border-0 bg-black text-center py-2">
-        <Link
-          href="/Studio"
-          className="text-danger text-decoration-none d-block"
-        >
-          <GrCluster className="fs-4 text-danger mb-1" />
-          <div style={{ fontSize: "0.8rem" }}>Studio</div>
-        </Link>
-      </ListGroupItem>
-
-      {/* Groups */}
-      <ListGroupItem className="border-0 bg-black text-center py-2">
-        <Link
-          href="/Groups"
-          className="text-danger text-decoration-none d-block"
-        >
-          <MdOutlineGroups className="fs-4 text-danger mb-1" />
-          <div style={{ fontSize: "0.8rem" }}>Groups</div>
-        </Link>
-      </ListGroupItem>
-
-      {/* Help */}
-      <ListGroupItem className="border-0 bg-black text-center py-2">
-        <Link href="/Help" className="text-danger text-decoration-none d-block">
-          <MdHelpOutline className="fs-4 text-danger mb-1" />
-          <div style={{ fontSize: "0.8rem" }}>Help</div>
-        </Link>
-      </ListGroupItem>
+      {/* Dynamic Links */}
+      {links.map((link) => {
+        const isActive = pathname.includes(link.label);
+        const Icon = link.icon;
+        return (
+          <ListGroupItem
+            key={link.path}
+            className={`border-0 text-center py-2 ${
+              isActive ? "bg-white text-danger" : "bg-black text-white"
+            }`}
+            as={Link}
+            href={link.path}
+          >
+            <Icon className={`fs-4 mb-1 ${isActive ? "text-danger" : "text-white"}`} />
+            <div style={{ fontSize: "0.8rem" }}>{link.label}</div>
+          </ListGroupItem>
+        );
+      })}
     </ListGroup>
   );
 }
