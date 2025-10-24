@@ -8,12 +8,26 @@ import { BsGripVertical } from "react-icons/bs";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
 
+// Define types for Module and Lesson
+type Lesson = {
+  _id: string;
+  name: string;
+};
+
+type Module = {
+  _id: string;
+  name: string;
+  course: string;
+  lessons?: Lesson[];
+};
+
 export default function ModulesPage() {
-  // get the current course ID from the URL
   const { cid } = useParams();
 
   // filter the modules to only show those belonging to the current course
-  const modules = db.modules.filter((module: any) => module.course === cid);
+  const modules: Module[] = db.modules.filter(
+    (module: Module) => module.course === cid
+  );
 
   return (
     <div>
@@ -23,7 +37,7 @@ export default function ModulesPage() {
 
       {/* Modules List */}
       <ListGroup id="wd-modules" className="rounded-0">
-        {modules.map((module: any) => (
+        {modules.map((module) => (
           <ListGroupItem
             key={module._id}
             className="wd-module p-0 mb-5 fs-5 border-gray"
@@ -38,7 +52,7 @@ export default function ModulesPage() {
             {/* Lessons for this module */}
             {module.lessons && (
               <ListGroup className="wd-lessons rounded-0">
-                {module.lessons.map((lesson: any) => (
+                {module.lessons.map((lesson) => (
                   <ListGroupItem
                     key={lesson._id}
                     className="wd-lesson p-3 ps-1"
