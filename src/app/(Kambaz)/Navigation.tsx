@@ -63,7 +63,7 @@ export default function KambazNavigation() {
         const Icon = link.icon;
         return (
           <ListGroupItem
-            key={`${link.label}-${link.path}`} // Making link path unique
+            key={`${link.label}-${link.path}`} 
             className={`border-0 text-center py-2 ${
               isActive ? "bg-white text-danger" : "bg-black text-white"
             }`}

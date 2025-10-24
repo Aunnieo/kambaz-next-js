@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { Row, Col, Card, CardBody, CardImg, CardTitle, CardText, Button } from "react-bootstrap";
-import * as db from "../Database"; // this will pull from courses.json
+import * as db from "../Database"; 
 
 export default function Dashboard() {
-  const courses = db.courses; // pulls all your classroom data
+  const courses = db.courses; 
 
   return (
     <div id="wd-dashboard">

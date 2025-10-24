@@ -8,22 +8,21 @@ import * as db from "../../../../Database";
 export default function PeopleTable() {
   const { cid } = useParams();
 
-  // 1️⃣ Handle missing or undefined course id
   if (!cid) {
     return <div>Loading...</div>;
   }
 
-  // 2️⃣ Filter enrollments for the current course (case-insensitive)
+ 
   const courseEnrollments = db.enrollments.filter(
     (e) => e.course.toLowerCase() === String(cid).toLowerCase()
   );
 
-  // 3️⃣ Map enrollment records to actual user objects
+
   const people = courseEnrollments
     .map((e) => db.users.find((u) => u._id === e.user))
-    .filter(Boolean); // remove undefineds if any
+    .filter(Boolean); 
 
-  // 4️⃣ Render table
+
   return (
     <div id="wd-people-table" className="p-3">
       <h4 className="mb-3">People in {cid}</h4>

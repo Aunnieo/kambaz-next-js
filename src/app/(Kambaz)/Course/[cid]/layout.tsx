@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { FaAlignJustify } from "react-icons/fa";
 import CourseNavigation from "./Navigation";
-import Breadcrumb from "./Breadcrumb"; // ✅ import your breadcrumb
+import Breadcrumb from "./Breadcrumb"; 
 import { use } from "react";
 
 export default function CoursesLayout({
@@ -12,7 +12,6 @@ export default function CoursesLayout({
 
   const sidebarWidth = 110;
 
-  // You can use the course ID to fake a course name for now
   const course = { name: ` ${cid}` };
 
   return (

@@ -8,7 +8,6 @@ import { BsGripVertical } from "react-icons/bs";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
 
-// Define types for Module and Lesson
 type Lesson = {
   _id: string;
   name: string;
