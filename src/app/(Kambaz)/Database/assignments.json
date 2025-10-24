@@ -1,0 +1,146 @@
+[
+  {
+    "id": 101,
+    "title": "React Project 1",
+    "start": "Sep 1 @ 12:00am",
+    "due": "Sep 7 @ 11:59pm",
+    "pts": 100,
+    "course": "1234",
+    "description": "Create a React app with multiple components, managing state and props."
+  },
+  {
+    "id": 102,
+    "title": "React Project 2",
+    "start": "Sep 8 @ 12:00am",
+    "due": "Sep 14 @ 11:59pm",
+    "pts": 100,
+    "course": "1234",
+    "description": "Enhance your React app with routing, hooks, and dynamic data."
+  },
+  {
+    "id": 201,
+    "title": "Supply Chain Analytics Assignment 1",
+    "start": "Sep 1 @ 12:00am",
+    "due": "Sep 7 @ 11:59pm",
+    "pts": 100,
+    "course": "3308",
+    "description": "Analyze supply chain data using descriptive statistics and visualization."
+  },
+  {
+    "id": 202,
+    "title": "Supply Chain Analytics Assignment 2",
+    "start": "Sep 8 @ 12:00am",
+    "due": "Sep 14 @ 11:59pm",
+    "pts": 100,
+    "course": "3308",
+    "description": "Apply predictive analytics to forecast demand and optimize inventory."
+  },
+  {
+    "id": 301,
+    "title": "Sourcing & Negotiation Assignment 1",
+    "start": "Sep 2 @ 12:00am",
+    "due": "Sep 9 @ 11:59pm",
+    "pts": 100,
+    "course": "3305",
+    "description": "Develop a sourcing strategy and identify potential suppliers."
+  },
+  {
+    "id": 302,
+    "title": "Sourcing & Negotiation Assignment 2",
+    "start": "Sep 10 @ 12:00am",
+    "due": "Sep 16 @ 11:59pm",
+    "pts": 100,
+    "course": "3305",
+    "description": "Conduct a mock negotiation and submit a report on outcomes."
+  },
+  {
+    "id": 401,
+    "title": "Fundies 1: Python Basics",
+    "start": "Sep 3 @ 12:00am",
+    "due": "Sep 10 @ 11:59pm",
+    "pts": 100,
+    "course": "Fundies1",
+    "description": "Write Python scripts covering variables, loops, and conditionals."
+  },
+  {
+    "id": 402,
+    "title": "Fundies 1: Functions & Loops",
+    "start": "Sep 11 @ 12:00am",
+    "due": "Sep 17 @ 11:59pm",
+    "pts": 100,
+    "course": "Fundies1",
+    "description": "Implement functions, loops, and modular code in Python projects."
+  },
+  {
+    "id": 501,
+    "title": "Fundies 2: Data Structures",
+    "start": "Sep 4 @ 12:00am",
+    "due": "Sep 11 @ 11:59pm",
+    "pts": 100,
+    "course": "Fundies2",
+    "description": "Work with lists, dictionaries, and sets in Python to solve problems."
+  },
+  {
+    "id": 502,
+    "title": "Fundies 2: Object-Oriented Programming",
+    "start": "Sep 12 @ 12:00am",
+    "due": "Sep 18 @ 11:59pm",
+    "pts": 100,
+    "course": "Fundies2",
+    "description": "Design classes and objects in Python with methods and attributes."
+  },
+  {
+    "id": 601,
+    "title": "Discrete Mathematics: Logic & Sets",
+    "start": "Sep 5 @ 12:00am",
+    "due": "Sep 12 @ 11:59pm",
+    "pts": 100,
+    "course": "DiscreteMaths",
+    "description": "Solve problems using propositional logic, sets, and relations."
+  },
+  {
+    "id": 602,
+    "title": "Discrete Mathematics: Combinatorics",
+    "start": "Sep 13 @ 12:00am",
+    "due": "Sep 19 @ 11:59pm",
+    "pts": 100,
+    "course": "DiscreteMaths",
+    "description": "Apply counting principles, permutations, and combinations."
+  },
+  {
+    "id": 701,
+    "title": "Strategy in Action: Case Study 1",
+    "start": "Sep 6 @ 12:00am",
+    "due": "Sep 13 @ 11:59pm",
+    "pts": 100,
+    "course": "Strategy",
+    "description": "Analyze a business case and propose strategic recommendations."
+  },
+  {
+    "id": 702,
+    "title": "Strategy in Action: Case Study 2",
+    "start": "Sep 14 @ 12:00am",
+    "due": "Sep 20 @ 11:59pm",
+    "pts": 100,
+    "course": "Strategy",
+    "description": "Evaluate competitive strategies and develop actionable plans."
+  },
+  {
+    "id": 801,
+    "title": "Organizational Behavior Assignment 1",
+    "start": "Sep 7 @ 12:00am",
+    "due": "Sep 14 @ 11:59pm",
+    "pts": 100,
+    "course": "OrgB",
+    "description": "Reflect on team dynamics and submit a report on organizational behavior concepts."
+  },
+  {
+    "id": 802,
+    "title": "Organizational Behavior Assignment 2",
+    "start": "Sep 15 @ 12:00am",
+    "due": "Sep 21 @ 11:59pm",
+    "pts": 100,
+    "course": "OrgB",
+    "description": "Analyze a case study and recommend improvements in organizational practices."
+  }
+]

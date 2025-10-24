@@ -22,7 +22,7 @@ export default function Dashboard() {
                   href={`/Course/${course.cid}/Home`}
                   className="wd-dashboard-course-link text-decoration-none text-dark"
                 >
-                  {/* Optional: Add logic to use different images per course */}
+      
                   <CardImg
                     src={`/images/${course.cid}.jpg`} // you can name your images after course IDs
                     variant="top"

@@ -1,0 +1,186 @@
+[
+  {
+    "_id": "M101",
+    "name": "Introduction to React",
+    "description": "Learn the fundamentals of React components, props, and state management.",
+    "course": "1234",
+    "lessons": [
+      {
+        "_id": "L101",
+        "name": "React Components",
+        "description": "Understand functional and class components."
+      },
+      {
+        "_id": "L102",
+        "name": "JSX and Rendering",
+        "description": "Learn how JSX translates to React elements."
+      },
+      {
+        "_id": "L103",
+        "name": "Props and State",
+        "description": "Manage dynamic data in React applications."
+      }
+    ]
+  },
+  {
+    "_id": "M201",
+    "name": "Data Analysis Foundations",
+    "description": "Use analytics tools to interpret and visualize supply chain data.",
+    "course": "3308",
+    "lessons": [
+      {
+        "_id": "L201",
+        "name": "Data Cleaning",
+        "description": "Preparing data for accurate analysis."
+      },
+      {
+        "_id": "L202",
+        "name": "Descriptive Analytics",
+        "description": "Summarizing and visualizing data trends."
+      },
+      {
+        "_id": "L203",
+        "name": "Predictive Models",
+        "description": "Forecasting outcomes using regression and machine learning."
+      }
+    ]
+  },
+  {
+    "_id": "M301",
+    "name": "Negotiation Principles",
+    "description": "Learn strategies for effective supplier negotiation.",
+    "course": "3305",
+    "lessons": [
+      {
+        "_id": "L301",
+        "name": "Supplier Evaluation",
+        "description": "Assessing suppliers based on cost, quality, and delivery."
+      },
+      {
+        "_id": "L302",
+        "name": "Negotiation Tactics",
+        "description": "Key techniques for achieving win-win outcomes."
+      },
+      {
+        "_id": "L303",
+        "name": "Contract Management",
+        "description": "Managing supplier contracts post-negotiation."
+      }
+    ]
+  },
+  {
+    "_id": "M401",
+    "name": "Programming Basics",
+    "description": "Learn to write clean and efficient Python code.",
+    "course": "Fundies1",
+    "lessons": [
+      {
+        "_id": "L401",
+        "name": "Variables and Data Types",
+        "description": "Introduction to Python syntax and data types."
+      },
+      {
+        "_id": "L402",
+        "name": "Functions and Loops",
+        "description": "Control flow and modular programming."
+      },
+      {
+        "_id": "L403",
+        "name": "Lists and Dictionaries",
+        "description": "Storing and manipulating collections of data."
+      }
+    ]
+  },
+  {
+    "_id": "M501",
+    "name": "Object-Oriented Design",
+    "description": "Explore classes, objects, and inheritance in programming.",
+    "course": "Fundies2",
+    "lessons": [
+      {
+        "_id": "L501",
+        "name": "Classes and Objects",
+        "description": "How to define and instantiate classes."
+      },
+      {
+        "_id": "L502",
+        "name": "Encapsulation and Inheritance",
+        "description": "Building reusable and maintainable code."
+      },
+      {
+        "_id": "L503",
+        "name": "Recursion and Data Structures",
+        "description": "Recursive problem solving with lists and trees."
+      }
+    ]
+  },
+  {
+    "_id": "M601",
+    "name": "Logic and Proofs",
+    "description": "Develop mathematical reasoning through formal proofs.",
+    "course": "DiscreteMaths",
+    "lessons": [
+      {
+        "_id": "L601",
+        "name": "Propositional Logic",
+        "description": "Understanding logical statements and truth tables."
+      },
+      {
+        "_id": "L602",
+        "name": "Set Theory",
+        "description": "Working with sets, subsets, and operations."
+      },
+      {
+        "_id": "L603",
+        "name": "Induction Proofs",
+        "description": "Learning mathematical induction."
+      }
+    ]
+  },
+  {
+    "_id": "M701",
+    "name": "Corporate Strategy",
+    "description": "Understand how businesses plan and implement long-term goals.",
+    "course": "Strategy",
+    "lessons": [
+      {
+        "_id": "L701",
+        "name": "Competitive Advantage",
+        "description": "Exploring what makes firms stand out in markets."
+      },
+      {
+        "_id": "L702",
+        "name": "Strategic Analysis",
+        "description": "Using SWOT and Porter’s Five Forces frameworks."
+      },
+      {
+        "_id": "L703",
+        "name": "Execution and Change",
+        "description": "Implementing strategies and managing transitions."
+      }
+    ]
+  },
+  {
+    "_id": "M801",
+    "name": "Team Dynamics",
+    "description": "Understand how people collaborate in organizations.",
+    "course": "OrgB",
+    "lessons": [
+      {
+        "_id": "L801",
+        "name": "Motivation Theories",
+        "description": "What drives individuals to perform effectively."
+      },
+      {
+        "_id": "L802",
+        "name": "Leadership Styles",
+        "description": "Different approaches to managing and leading teams."
+      },
+      {
+        "_id": "L803",
+        "name": "Communication in Teams",
+        "description": "Improving communication and reducing conflict."
+      }
+    ]
+  }
+]

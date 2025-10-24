@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { FaAlignJustify } from "react-icons/fa";
 import CourseNavigation from "./Navigation";
+import Breadcrumb from "./Breadcrumb"; // ✅ import your breadcrumb
 import { use } from "react";
 
 export default function CoursesLayout({
@@ -11,17 +12,21 @@ export default function CoursesLayout({
 
   const sidebarWidth = 110;
 
+  // You can use the course ID to fake a course name for now
+  const course = { name: ` ${cid}` };
+
   return (
     <div id="wd-courses" className="d-flex">
       <div className="d-none d-md-block">
-        <CourseNavigation />
+        <CourseNavigation cid={cid} />
       </div>
 
       <div className="flex-fill d-flex" style={{ marginLeft: sidebarWidth }}>
         <div className="flex-fill p-3">
           <h2 className="text-danger">
             <FaAlignJustify className="me-4 fs-4 mb-1" />
-            Course {cid}
+            <Breadcrumb course={course} />
+            
           </h2>
           <hr />
           {children}

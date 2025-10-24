@@ -77,3 +77,28 @@ body * {
   align-items: center;
   gap: 0.25rem;
 }
+
+/* Sidebar container */
+#wd-courses-navigation {
+  background-color: white;  /* sidebar background white */
+}
+
+/* Default link style */
+#wd-courses-navigation .list-group-item {
+  color: red !important;       /* inactive links black */
+  background-color: white !important;
+}
+
+/* Active link style */
+#wd-courses-navigation .list-group-item.active {
+  color: red !important;         /* active link text red */
+  background-color: white !important;  /* background stays white */
+  border-left: 3px solid red !important;
+}
+
+/* Optional: hover effect for clarity */
+#wd-courses-navigation .list-group-item:hover {
+  background-color: #f5f5f5; /* light gray on hover */
+
+  
+}

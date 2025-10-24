@@ -9,7 +9,6 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 
-
 export default function KambazNavigation() {
   const pathname = usePathname();
 
@@ -60,18 +59,21 @@ export default function KambazNavigation() {
 
       {/* Dynamic Links */}
       {links.map((link) => {
-        const isActive = pathname.includes(link.label);
+        const isActive = pathname.startsWith(link.path);
         const Icon = link.icon;
         return (
           <ListGroupItem
-            key={link.path}
+            key={`${link.label}-${link.path}`} // Making link path unique
             className={`border-0 text-center py-2 ${
               isActive ? "bg-white text-danger" : "bg-black text-white"
             }`}
             as={Link}
             href={link.path}
           >
-            <Icon className={`fs-4 mb-1 ${isActive ? "text-danger" : "text-white"}`} />
+            <Icon
+              className="fs-4 mb-1"
+              style={{ color: isActive ? "#dc3545" : "#ffffff" }}
+            />
             <div style={{ fontSize: "0.8rem" }}>{link.label}</div>
           </ListGroupItem>
         );
