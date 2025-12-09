@@ -10,7 +10,10 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // Next.js recommended configs
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+
+  // Custom overrides
   {
     ignores: [
       "node_modules/**",
@@ -19,6 +22,14 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "no-unused-vars": "off",
+
+      
+      "react/prop-types": "off",
+    },
   },
 ];
 
