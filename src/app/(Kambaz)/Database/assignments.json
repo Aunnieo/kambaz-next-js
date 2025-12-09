@@ -6,7 +6,8 @@
     "due": "Sep 7 @ 11:59pm",
     "pts": 100,
     "course": "1234",
-    "description": "Create a React app with multiple components, managing state and props."
+    "description": "Create a React app with multiple components, managing state and props.",
+    "availableUntil": "Sep 14 @ 11:59pm"
   },
   {
     "id": 102,
@@ -15,7 +16,8 @@
     "due": "Sep 14 @ 11:59pm",
     "pts": 100,
     "course": "1234",
-    "description": "Enhance your React app with routing, hooks, and dynamic data."
+    "description": "Enhance your React app with routing, hooks, and dynamic data.",
+    "availableUntil": "Sep 21 @ 11:59pm"
   },
   {
     "id": 201,
@@ -24,7 +26,8 @@
     "due": "Sep 7 @ 11:59pm",
     "pts": 100,
     "course": "3308",
-    "description": "Analyze supply chain data using descriptive statistics and visualization."
+    "description": "Analyze supply chain data using descriptive statistics and visualization.",
+    "availableUntil": "Sep 14 @ 11:59pm"
   },
   {
     "id": 202,
@@ -33,7 +36,8 @@
     "due": "Sep 14 @ 11:59pm",
     "pts": 100,
     "course": "3308",
-    "description": "Apply predictive analytics to forecast demand and optimize inventory."
+    "description": "Apply predictive analytics to forecast demand and optimize inventory.",
+    "availableUntil": "Sep 21 @ 11:59pm"
   },
   {
     "id": 301,
@@ -42,7 +46,8 @@
     "due": "Sep 9 @ 11:59pm",
     "pts": 100,
     "course": "3305",
-    "description": "Develop a sourcing strategy and identify potential suppliers."
+    "description": "Develop a sourcing strategy and identify potential suppliers.",
+    "availableUntil": "Sep 16 @ 11:59pm"
   },
   {
     "id": 302,
@@ -51,7 +56,8 @@
     "due": "Sep 16 @ 11:59pm",
     "pts": 100,
     "course": "3305",
-    "description": "Conduct a mock negotiation and submit a report on outcomes."
+    "description": "Conduct a mock negotiation and submit a report on outcomes.",
+    "availableUntil": "Sep 23 @ 11:59pm"
   },
   {
     "id": 401,
@@ -60,7 +66,8 @@
     "due": "Sep 10 @ 11:59pm",
     "pts": 100,
     "course": "Fundies1",
-    "description": "Write Python scripts covering variables, loops, and conditionals."
+    "description": "Write Python scripts covering variables, loops, and conditionals.",
+    "availableUntil": "Sep 17 @ 11:59pm"
   },
   {
     "id": 402,
@@ -69,7 +76,8 @@
     "due": "Sep 17 @ 11:59pm",
     "pts": 100,
     "course": "Fundies1",
-    "description": "Implement functions, loops, and modular code in Python projects."
+    "description": "Implement functions, loops, and modular code in Python projects.",
+    "availableUntil": "Sep 24 @ 11:59pm"
   },
   {
     "id": 501,
@@ -78,7 +86,8 @@
     "due": "Sep 11 @ 11:59pm",
     "pts": 100,
     "course": "Fundies2",
-    "description": "Work with lists, dictionaries, and sets in Python to solve problems."
+    "description": "Work with lists, dictionaries, and sets in Python to solve problems.",
+    "availableUntil": "Sep 18 @ 11:59pm"
   },
   {
     "id": 502,
@@ -87,7 +96,8 @@
     "due": "Sep 18 @ 11:59pm",
     "pts": 100,
     "course": "Fundies2",
-    "description": "Design classes and objects in Python with methods and attributes."
+    "description": "Design classes and objects in Python with methods and attributes.",
+    "availableUntil": "Sep 25 @ 11:59pm"
   },
   {
     "id": 601,
@@ -96,7 +106,8 @@
     "due": "Sep 12 @ 11:59pm",
     "pts": 100,
     "course": "DiscreteMaths",
-    "description": "Solve problems using propositional logic, sets, and relations."
+    "description": "Solve problems using propositional logic, sets, and relations.",
+    "availableUntil": "Sep 19 @ 11:59pm"
   },
   {
     "id": 602,
@@ -105,7 +116,8 @@
     "due": "Sep 19 @ 11:59pm",
     "pts": 100,
     "course": "DiscreteMaths",
-    "description": "Apply counting principles, permutations, and combinations."
+    "description": "Apply counting principles, permutations, and combinations.",
+    "availableUntil": "Sep 26 @ 11:59pm"
   },
   {
     "id": 701,
@@ -114,7 +126,8 @@
     "due": "Sep 13 @ 11:59pm",
     "pts": 100,
     "course": "Strategy",
-    "description": "Analyze a business case and propose strategic recommendations."
+    "description": "Analyze a business case and propose strategic recommendations.",
+    "availableUntil": "Sep 20 @ 11:59pm"
   },
   {
     "id": 702,
@@ -123,7 +136,8 @@
     "due": "Sep 20 @ 11:59pm",
     "pts": 100,
     "course": "Strategy",
-    "description": "Evaluate competitive strategies and develop actionable plans."
+    "description": "Evaluate competitive strategies and develop actionable plans.",
+    "availableUntil": "Sep 27 @ 11:59pm"
   },
   {
     "id": 801,
@@ -132,7 +146,8 @@
     "due": "Sep 14 @ 11:59pm",
     "pts": 100,
     "course": "OrgB",
-    "description": "Reflect on team dynamics and submit a report on organizational behavior concepts."
+    "description": "Reflect on team dynamics and submit a report on organizational behavior concepts.",
+    "availableUntil": "Sep 21 @ 11:59pm"
   },
   {
     "id": 802,
@@ -141,6 +156,7 @@
     "due": "Sep 21 @ 11:59pm",
     "pts": 100,
     "course": "OrgB",
-    "description": "Analyze a case study and recommend improvements in organizational practices."
+    "description": "Analyze a case study and recommend improvements in organizational practices.",
+    "availableUntil": "Sep 28 @ 11:59pm"
   }
 ]

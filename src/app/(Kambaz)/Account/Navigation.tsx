@@ -1,43 +1,38 @@
 "use client";
 
 import Link from "next/link";
-import { ListGroup, ListGroupItem } from "react-bootstrap";
 import { usePathname } from "next/navigation";
+import { Nav, NavItem, NavLink } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 export default function AccountNavigation() {
+  const { currentUser } = useSelector(
+    (state: RootState) => state.accountReducer
+  );
   const pathname = usePathname();
 
-  const links = [
-    { href: "/Account/Signin", label: "Sign In" },
-    { href: "/Account/Signup", label: "Sign Up" },
-    { href: "/Account/Profile", label: "Profile" },
-  ];
+  const links = currentUser
+    ? [{ href: "/Account/Profile", label: "Profile" }]
+    : [
+        { href: "/Account/Signin", label: "Sign In" },
+        { href: "/Account/Signup", label: "Sign Up" },
+      ];
 
   return (
-    <ListGroup
-      id="wd-account-navigation"
-      style={{ width: 110 }}
-      className="rounded-0 position-fixed top-0 bottom-0 bg-white z-2"
-    >
-      {links.map((link) => {
-        const isActive = pathname === link.href;
-        return (
-          <ListGroupItem
-            key={link.href}
-            className="border-0 text-center py-2"
-            style={{ backgroundColor: "white" }}
+    <Nav id="wd-account-navigation" variant="pills" className="flex-column">
+      {links.map((link) => (
+        <NavItem key={link.href}>
+          <NavLink
+            as={Link}
+            href={link.href}
+            active={pathname === link.href}
+            className="text-center"
           >
-            <Link
-              href={link.href}
-              className={`text-decoration-none d-block ${
-                isActive ? "text-dark" : "text-danger"
-              }`}
-            >
-              {link.label}
-            </Link>
-          </ListGroupItem>
-        );
-      })}
-    </ListGroup>
+            {link.label}
+          </NavLink>
+        </NavItem>
+      ))}
+    </Nav>
   );
 }

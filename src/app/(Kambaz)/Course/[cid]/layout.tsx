@@ -1,35 +1,40 @@
-import { ReactNode } from "react";
+"use client";
+import { ReactNode, useState } from "react";
 import { FaAlignJustify } from "react-icons/fa";
 import CourseNavigation from "./Navigation";
-import Breadcrumb from "./Breadcrumb"; 
-import { use } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "next/navigation";
+import { RootState } from "../../store";
 
-export default function CoursesLayout({
-  children,
-  params,
-}: Readonly<{ children: ReactNode; params: Promise<{ cid: string }> }>) {
-  const { cid } = use(params);
+export default function CoursesLayout({ children }: { children: ReactNode }) {
+  const { cid } = useParams() as { cid: string };
+  const { courses } = useSelector((state: RootState) => state.coursesReducer);
 
-  const sidebarWidth = 110;
+  // Find the course by id
+  const course = courses.find((course: any) => course.id === cid);
 
-  const course = { name: ` ${cid}` };
+  // Toggle sidebar visibility
+  const [sidebarVisible, setSidebarVisible] = useState(true);
+  const toggleSidebar = () => setSidebarVisible(!sidebarVisible);
 
   return (
     <div id="wd-courses" className="d-flex">
-      <div className="d-none d-md-block">
-        <CourseNavigation cid={cid} />
-      </div>
-
-      <div className="flex-fill d-flex" style={{ marginLeft: sidebarWidth }}>
-        <div className="flex-fill p-3">
-          <h2 className="text-danger">
-            <FaAlignJustify className="me-4 fs-4 mb-1" />
-            <Breadcrumb course={course} />
-            
-          </h2>
-          <hr />
-          {children}
+      {sidebarVisible && (
+        <div className="d-none d-md-block">
+          <CourseNavigation cid={cid} />
         </div>
+      )}
+
+      <div className="flex-fill p-3">
+        <h2 className="text-danger">
+          <FaAlignJustify
+            className="me-4 fs-4 mb-1 cursor-pointer"
+            onClick={toggleSidebar}
+          />
+          {course?.title}
+        </h2>
+        <hr />
+        {children}
       </div>
     </div>
   );

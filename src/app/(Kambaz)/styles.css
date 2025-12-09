@@ -1,11 +1,10 @@
-body   {
+body {
   margin: 0;
   padding: 0;
 }
 
 body * {
-  font-family: Arial,
-  Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -35,8 +34,6 @@ body * {
 .wd-lesson {
   border-left: 3px solid green !important;
 }
-
-
 
 /* Container for the assignments list */
 #wd-assignments-container {
@@ -80,25 +77,23 @@ body * {
 
 /* Sidebar container */
 #wd-courses-navigation {
-  background-color: white;  /* sidebar background white */
+  background-color: white; /* sidebar background white */
 }
 
 /* Default link style */
 #wd-courses-navigation .list-group-item {
-  color: red !important;       /* inactive links black */
+  color: red !important; /* inactive links black */
   background-color: white !important;
 }
 
 /* Active link style */
 #wd-courses-navigation .list-group-item.active {
-  color: red !important;         /* active link text red */
-  background-color: white !important;  /* background stays white */
+  color: red !important; /* active link text red */
+  background-color: white !important; /* background stays white */
   border-left: 3px solid red !important;
 }
 
-/* Optional: hover effect for clarity */
+/* hover effect for clarity */
 #wd-courses-navigation .list-group-item:hover {
   background-color: #f5f5f5; /* light gray on hover */
-
-  
 }

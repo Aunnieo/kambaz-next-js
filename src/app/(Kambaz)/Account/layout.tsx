@@ -1,4 +1,4 @@
- import { ReactNode } from "react";
+import { ReactNode } from "react";
 import AccountNavigation from "./Navigation";
 
 export default function AccountLayout({
@@ -12,9 +12,7 @@ export default function AccountLayout({
       </div>
 
       {/* Main content */}
-      <div className="flex-fill">
-        {children}
-      </div>
+      <div className="flex-fill">{children}</div>
     </div>
   );
 }

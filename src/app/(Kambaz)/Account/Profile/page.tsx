@@ -1,61 +1,82 @@
 "use client";
 
-import Link from "next/link";
-import { Form, Button, Card } from "react-bootstrap";
+import { redirect } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setCurrentUser } from "../reducer";
+import { RootState } from "../../store";
+import { Button, FormControl } from "react-bootstrap";
 
 export default function Profile() {
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector(
+    (state: RootState) => state.accountReducer
+  );
+
+  const [profile, setProfile] = useState<any>(null);
+
+  // Load profile OR redirect if not signed in
+  useEffect(() => {
+    if (!currentUser) {
+      redirect("/Account/Signin");
+    } else {
+      setProfile(currentUser);
+    }
+  }, [currentUser]);
+
+  const signout = () => {
+    dispatch(setCurrentUser(null));
+    redirect("/Account/Signin");
+  };
+
+  if (!profile) return null;
+
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
-      <Card className="p-4 shadow" style={{ width: "400px" }}>
-        <h3 className="mb-4 text-center">Profile</h3>
+    <div className="wd-profile-screen p-3">
+      <h3>Profile</h3>
 
-        <Form>
-          {/* Username */}
-          <Form.Group className="mb-3" controlId="wd-username">
-            <Form.Control type="text" defaultValue="alice" placeholder="Username" />
-          </Form.Group>
+      {/* Username */}
+      <FormControl
+        id="wd-username"
+        className="mb-2"
+        defaultValue={profile.username}
+        onChange={(e) => setProfile({ ...profile, username: e.target.value })}
+      />
 
-          {/* Password */}
-          <Form.Group className="mb-3" controlId="wd-password">
-            <Form.Control type="password" defaultValue="123" placeholder="Password" />
-          </Form.Group>
+      {/* Password */}
+      <FormControl
+        id="wd-password"
+        className="mb-2"
+        defaultValue={profile.password}
+        type="password"
+        onChange={(e) => setProfile({ ...profile, password: e.target.value })}
+      />
 
-          {/* First Name */}
-          <Form.Group className="mb-3" controlId="wd-firstname">
-            <Form.Control type="text" defaultValue="Alice" placeholder="First Name" />
-          </Form.Group>
+      {/* Full Name */}
+      <FormControl
+        id="wd-name"
+        className="mb-2"
+        defaultValue={profile.name}
+        onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+      />
 
-          {/* Last Name */}
-          <Form.Group className="mb-3" controlId="wd-lastname">
-            <Form.Control type="text" defaultValue="Wonderland" placeholder="Last Name" />
-          </Form.Group>
+      {/* Role Selector */}
+      <select
+        className="form-control mb-2"
+        id="wd-role"
+        defaultValue={profile.role}
+        onChange={(e) => setProfile({ ...profile, role: e.target.value })}
+      >
+        <option value="STUDENT">Student</option>
+        <option value="FACULTY">Faculty</option>
+        <option value="TA">TA</option>
+        <option value="ADMIN">Admin</option>
+      </select>
 
-          {/* Date of Birth */}
-          <Form.Group className="mb-3" controlId="wd-dob">
-            <Form.Control type="date" defaultValue="2000-01-01" />
-          </Form.Group>
-
-          {/* Email */}
-          <Form.Group className="mb-3" controlId="wd-email">
-            <Form.Control type="email" defaultValue="alice@wonderland" placeholder="Email" />
-          </Form.Group>
-
-          {/* Role */}
-          <Form.Group className="mb-3" controlId="wd-role">
-            <Form.Select defaultValue="FACULTY">
-              <option value="USER">User</option>
-              <option value="ADMIN">Admin</option>
-              <option value="FACULTY">Faculty</option>
-              <option value="STUDENT">Student</option>
-            </Form.Select>
-          </Form.Group>
-
-          {/* Sign Out Button */}
-          <Link href="/Account/Signin" className="btn btn-danger w-100 mt-3">
-            Sign Out
-          </Link>
-        </Form>
-      </Card>
+      {/* Sign Out Button */}
+      <Button onClick={signout} className="w-100 mb-2" id="wd-signout-btn">
+        Sign out
+      </Button>
     </div>
   );
 }

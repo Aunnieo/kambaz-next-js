@@ -1,10 +1,58 @@
 [
-  { "_id": "123", "name": "Alice Johnson", "role": "STUDENT" },
-  { "_id": "234", "name": "Bob Smith", "role": "STUDENT" },
-  { "_id": "345", "name": "Charlie Nguyen", "role": "STUDENT" },
-  { "_id": "456", "name": "Dr. Emily White", "role": "FACULTY" },
-  { "_id": "567", "name": "Michael Lee", "role": "TA" },
-  { "_id": "678", "name": "Sarah Kim", "role": "STUDENT" },
-  { "_id": "789", "name": "David Garcia", "role": "STUDENT" },
-  { "_id": "890", "name": "Dr. Olivia Brown", "role": "FACULTY" }
+  {
+    "_id": "123",
+    "username": "alice",
+    "password": "pass123",
+    "name": "Alice Johnson",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "234",
+    "username": "bob",
+    "password": "pass123",
+    "name": "Bob Smith",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "345",
+    "username": "charlie",
+    "password": "pass123",
+    "name": "Charlie Nguyen",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "456",
+    "username": "emily",
+    "password": "pass123",
+    "name": "Dr. Emily White",
+    "role": "FACULTY"
+  },
+  {
+    "_id": "567",
+    "username": "michael",
+    "password": "pass123",
+    "name": "Michael Lee",
+    "role": "TA"
+  },
+  {
+    "_id": "678",
+    "username": "sarah",
+    "password": "pass123",
+    "name": "Sarah Kim",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "789",
+    "username": "david",
+    "password": "pass123",
+    "name": "David Garcia",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "890",
+    "username": "olivia",
+    "password": "pass123",
+    "name": "Dr. Olivia Brown",
+    "role": "FACULTY"
+  }
 ]

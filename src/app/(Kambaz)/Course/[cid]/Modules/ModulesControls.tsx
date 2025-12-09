@@ -1,10 +1,29 @@
 "use client";
 
 import { Button } from "react-bootstrap";
-import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from "react-bootstrap";
-import GreenCheckmark
- from "./GreenCheckmark";
-export default function ModulesControls() {
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+} from "react-bootstrap";
+import GreenCheckmark from "./GreenCheckmark";
+import ModuleEditor from "./ModuleEditor";
+import { useState } from "react";
+
+export default function ModulesControls({
+  moduleName,
+  setModuleName,
+  addModule,
+}: {
+  moduleName: string;
+  setModuleName: (title: string) => void;
+  addModule: () => void;
+}) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div
       id="wd-modules-controls"
@@ -13,6 +32,7 @@ export default function ModulesControls() {
       {/* Module Button */}
       <Button
         variant="danger"
+        onClick={handleShow}
         size="lg"
         id="wd-add-module-btn"
       >
@@ -52,6 +72,15 @@ export default function ModulesControls() {
       <Button variant="secondary" size="lg" id="wd-collapse-all">
         Collapse All
       </Button>
+
+      <ModuleEditor
+        show={show}
+        handleClose={handleClose}
+        dialogTitle="Add Module"
+        moduleName={moduleName}
+        setModuleName={setModuleName}
+        addModule={addModule}
+      />
     </div>
   );
 }
