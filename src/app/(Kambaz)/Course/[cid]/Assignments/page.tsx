@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store";
 import { deleteAssignment } from "./reducer";
 
+
 export default function AssignmentsPage() {
   const params = useParams();
   const cidParam = params.cid;
@@ -29,7 +30,7 @@ export default function AssignmentsPage() {
 
   const isFaculty = currentUser?.role === "FACULTY";
 
-  // Assignments for THIS course
+  // Assignments for current course enrolled in
   const assignments = useSelector((state: RootState) =>
     state.assignmentsReducer.assignments.filter((a) => a.course === cid)
   );
@@ -42,6 +43,7 @@ export default function AssignmentsPage() {
 
   return (
     <div id="wd-assignments-container" className="p-3">
+
       {/* Top Bar: Search + Buttons */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         {/* Search Input */}

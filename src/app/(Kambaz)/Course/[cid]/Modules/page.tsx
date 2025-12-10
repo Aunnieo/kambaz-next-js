@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams } from "next/navigation";
 import { ListGroup, ListGroupItem, FormControl } from "react-bootstrap";
 import { BsGripVertical } from "react-icons/bs";
-
+import Breadcrumb from "../Breadcrumb";
 import ModulesControls from "./ModulesControls";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
@@ -22,6 +22,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store";
 
 export default function ModulesPage() {
+
   const params = useParams();
   const rawCid = params.cid;
   const cid = Array.isArray(rawCid) ? rawCid[0] : rawCid ?? "";
