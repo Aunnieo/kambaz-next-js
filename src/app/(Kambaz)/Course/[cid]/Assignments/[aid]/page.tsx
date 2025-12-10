@@ -11,43 +11,43 @@ import { RootState } from "../../../../store";
 export default function AssignmentEditor() {
   const params = useParams();
   const cidParam = params.cid;
-  const aid = params.aid;
+  const aidParam = params.aid;
 
   const cid = Array.isArray(cidParam) ? cidParam[0] : cidParam ?? "";
+  const aid = Array.isArray(aidParam) ? aidParam[0] : aidParam ?? "";
 
   const dispatch = useDispatch();
+
   const { currentUser } = useSelector(
     (state: RootState) => state.accountReducer
   );
-  const { assignments } = useSelector(
-    (state: RootState) => state.assignmentsReducer
+
+  const assignments = useSelector(
+    (state: RootState) => state.assignmentsReducer.assignments
   );
-
-  const isFaculty = currentUser?.role === "FACULTY";
-
-  // blocks any student from accessing editor
-  if (!isFaculty) {
-    return redirect(`/Course/${cid}/Assignments`);
-  }
-
-  const isNew = aid === "new";
 
   const existing = assignments.find(
     (a) => a.id.toString() === aid && a.course === cid
   );
 
-  const [assignment, setAssignment] = useState(
-    existing || {
-      id: Math.floor(Math.random() * 10000000),
-      course: cid,
-      title: "",
-      description: "",
-      pts: 100,
-      start: "",
-      due: "",
-      availableUntil: "",
-    }
-  );
+  const isNew = aid === "new";
+
+
+  if (!currentUser || currentUser.role !== "FACULTY") {
+    redirect(`/Course/${cid}/Assignments`);
+  }
+
+
+  const [assignment, setAssignment] = useState({
+    id: existing?.id ?? Math.floor(Math.random() * 1000000),
+    course: cid,
+    title: existing?.title ?? "",
+    description: existing?.description ?? "",
+    pts: existing?.pts ?? 100,
+    start: existing?.start ?? "",
+    due: existing?.due ?? "",
+    availableUntil: (existing as any)?.availableUntil ?? "",
+  });
 
   const save = () => {
     if (isNew) {
@@ -70,6 +70,7 @@ export default function AssignmentEditor() {
             onChange={(e) =>
               setAssignment({ ...assignment, title: e.target.value })
             }
+            id="wd-assignment-name"
           />
         </Form.Group>
 
@@ -82,6 +83,7 @@ export default function AssignmentEditor() {
             onChange={(e) =>
               setAssignment({ ...assignment, description: e.target.value })
             }
+            id="wd-assignment-description"
           />
         </Form.Group>
 
@@ -91,8 +93,12 @@ export default function AssignmentEditor() {
             type="number"
             value={assignment.pts}
             onChange={(e) =>
-              setAssignment({ ...assignment, pts: Number(e.target.value) })
+              setAssignment({
+                ...assignment,
+                pts: Number(e.target.value),
+              })
             }
+            id="wd-assignment-points"
           />
         </Form.Group>
 
@@ -103,6 +109,7 @@ export default function AssignmentEditor() {
             onChange={(e) =>
               setAssignment({ ...assignment, start: e.target.value })
             }
+            id="wd-assignment-start"
           />
         </Form.Group>
 
@@ -113,6 +120,7 @@ export default function AssignmentEditor() {
             onChange={(e) =>
               setAssignment({ ...assignment, due: e.target.value })
             }
+            id="wd-assignment-due"
           />
         </Form.Group>
 
@@ -126,6 +134,7 @@ export default function AssignmentEditor() {
                 availableUntil: e.target.value,
               })
             }
+            id="wd-assignment-available-until"
           />
         </Form.Group>
       </Card>
@@ -134,11 +143,16 @@ export default function AssignmentEditor() {
         <Link
           href={`/Course/${cid}/Assignments`}
           className="btn btn-secondary me-2"
+          id="wd-assignment-cancel"
         >
           Cancel
         </Link>
 
-        <Button onClick={save} className="btn btn-primary">
+        <Button
+          onClick={save}
+          className="btn btn-primary"
+          id="wd-assignment-save"
+        >
           Save
         </Button>
       </div>

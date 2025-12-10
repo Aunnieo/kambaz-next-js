@@ -17,18 +17,22 @@ import { RootState } from "../../../store";
 import { deleteAssignment } from "./reducer";
 
 export default function AssignmentsPage() {
-  const { cid } = useParams();
+  const params = useParams();
+  const cidParam = params.cid;
+  const cid = Array.isArray(cidParam) ? cidParam[0] : cidParam ?? "";
+
   const dispatch = useDispatch();
 
   const { currentUser } = useSelector(
     (state: RootState) => state.accountReducer
   );
 
+  const isFaculty = currentUser?.role === "FACULTY";
+
+  // Assignments for THIS course
   const assignments = useSelector((state: RootState) =>
     state.assignmentsReducer.assignments.filter((a) => a.course === cid)
   );
-
-  const isFaculty = currentUser?.role === "FACULTY";
 
   const handleDelete = (id: number) => {
     if (confirm("Are you sure you want to delete this assignment?")) {
@@ -38,9 +42,9 @@ export default function AssignmentsPage() {
 
   return (
     <div id="wd-assignments-container" className="p-3">
-      {/* Top Bar */}
+      {/* Top Bar: Search + Buttons */}
       <div className="d-flex justify-content-between align-items-center mb-3">
-        {/* Search */}
+        {/* Search Input */}
         <InputGroup style={{ maxWidth: "400px" }}>
           <InputGroup.Text>
             <BiSearch />
@@ -54,7 +58,7 @@ export default function AssignmentsPage() {
             <BiPlus className="me-1" /> Group
           </Button>
 
-          {/* Faculty-only create button */}
+          {/* Faculty-only:  adding an Assignment */}
           {isFaculty && (
             <Link
               href={`/Course/${cid}/Assignments/new`}
@@ -67,7 +71,7 @@ export default function AssignmentsPage() {
       </div>
 
       {/* Assignment List */}
-      <ListGroup className="rounded-0">
+      <ListGroup className="rounded-0" id="wd-assignments">
         {assignments.length === 0 ? (
           <ListGroupItem className="text-center text-muted">
             No assignments for this course.
@@ -83,16 +87,20 @@ export default function AssignmentsPage() {
                 padding: "1rem",
               }}
             >
-              {/* LEFT SIDE */}
               <div>
                 <BsGripVertical className="me-2 fs-3" />
 
-                <Link
-                  href={`/Course/${cid}/Assignments/${a.id}`}
-                  className="text-decoration-none"
-                >
+                {/* Faculty can click into editor, students see plain text */}
+                {isFaculty ? (
+                  <Link
+                    href={`/Course/${cid}/Assignments/${a.id}`}
+                    className="text-decoration-none"
+                  >
+                    <strong>{a.title}</strong>
+                  </Link>
+                ) : (
                   <strong>{a.title}</strong>
-                </Link>
+                )}
 
                 <div className="small text-muted mt-1">
                   Available: {a.start}
@@ -101,21 +109,20 @@ export default function AssignmentsPage() {
                 </div>
               </div>
 
-              {/* RIGHT SIDE */}
               <div className="d-flex align-items-center gap-2">
-                {/* Faculty-only trash button */}
+                {/* Faculty-only delete */}
                 {isFaculty && (
                   <Button
                     variant="outline-danger"
                     size="sm"
-                    className="p-1"
                     onClick={() => handleDelete(a.id)}
+                    className="p-1"
+                    id="wd-delete-assignment-btn"
                   >
                     <FaTrash />
                   </Button>
                 )}
 
-                {/* Checkmark ALWAYS shown */}
                 <FaCheckCircle className="text-success fs-5" />
               </div>
             </ListGroupItem>

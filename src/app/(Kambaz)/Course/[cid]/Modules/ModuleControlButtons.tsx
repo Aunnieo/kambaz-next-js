@@ -1,21 +1,47 @@
 "use client";
-import { FaTrash } from "react-icons/fa";
-import { FaPencil } from "react-icons/fa6";
 
-
-
+import { FaTrash, FaPen } from "react-icons/fa";
 import { BsPlus } from "react-icons/bs";
 import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "./GreenCheckmark";
 
-export default function ModuleControlButtons({ moduleId, deleteModule, editModule }: { moduleId: string; deleteModule: (moduleId: string) => void;  editModule: (moduleId: string) => void }) {
+export default function ModuleControlButtons({
+  moduleId,
+  handleDelete,
+  handleEdit,
+  handleAddLesson,
+}: {
+  moduleId: string;
+  handleDelete: () => void;
+  handleEdit: () => void;
+  handleAddLesson: () => void;
+}) {
   return (
-    <div className="float-end">
-            <FaPencil onClick={() => editModule(moduleId)} className="text-primary me-3" />
-            <FaTrash className="text-danger me-2 mb-1" onClick={() => deleteModule(moduleId)}/>
+    <div className="float-end d-flex align-items-center gap-3">
+      {/* Edit module name */}
+      <FaPen
+        className="text-primary fs-5"
+        onClick={handleEdit}
+        style={{ cursor: "pointer" }}
+      />
 
+      {/* Delete module */}
+      <FaTrash
+        className="text-danger fs-5"
+        onClick={handleDelete}
+        style={{ cursor: "pointer" }}
+      />
+
+ 
       <GreenCheckmark />
-      <BsPlus className="fs-4" />
+
+      {/* Add Lesson */}
+      <BsPlus
+        className="fs-4 text-success"
+        onClick={handleAddLesson}
+        style={{ cursor: "pointer" }}
+      />
+
       <IoEllipsisVertical className="fs-4" />
     </div>
   );
