@@ -9,7 +9,7 @@ export interface Assignment {
   pts: number;
   course: string;
   description: string;
-  availableUntil: string; // ← FIXED spelling
+  availableUntil: string; 
 }
 
 interface AssignmentsState {

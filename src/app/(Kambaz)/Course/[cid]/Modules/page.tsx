@@ -27,6 +27,7 @@ export default function ModulesPage() {
   const rawCid = params.cid;
   const cid = Array.isArray(rawCid) ? rawCid[0] : rawCid ?? "";
 
+  
   const dispatch = useDispatch();
 
   const { modules } = useSelector((state: RootState) => state.modulesReducer);

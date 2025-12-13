@@ -1,0 +1,59 @@
+
+  [
+  {
+    "id": "q101",
+    "title": "Quiz 1 - HTML",
+    "course": "1234",
+    "quizType": "Graded Quiz",
+    "published": false,
+    "availableFrom": "Sep 1 @ 12:00am",
+    "availableUntil": "Sep 7 @ 11:59pm",
+    "dueDate": "Sep 7 @ 11:59pm",
+    "points": 29,
+    "timeLimit": 20,
+    "multipleAttempts": false,
+    "questions": 11
+  },
+  {
+    "id": "q102",
+    "title": "Quiz 2 - CSS",
+    "course": "1234",
+    "quizType": "Graded Quiz",
+    "published": false,
+    "availableFrom": "Sep 8 @ 12:00am",
+    "availableUntil": "Sep 14 @ 11:59pm",
+    "dueDate": "Sep 14 @ 11:59pm",
+    "points": 30,
+    "timeLimit": 30,
+    "multipleAttempts": true,
+    "questions": 12
+  },
+  {
+    "id": "q201",
+    "title": "Supply Chain Quiz 1",
+    "course": "3308",
+    "quizType": "Graded Quiz",
+    "published": false,
+    "availableFrom": "Sep 1 @ 12:00am",
+    "availableUntil": "Sep 14 @ 11:59pm",
+    "dueDate": "Sep 7 @ 11:59pm",
+    "points": 25,
+    "timeLimit": 25,
+    "multipleAttempts": false,
+    "questions": 10
+  },
+  {
+    "id": "q202",
+    "title": "Supply Chain Quiz 2",
+    "course": "3308",
+    "quizType": "Practice Quiz",
+    "published": false,
+    "availableFrom": "Sep 15 @ 12:00am",
+    "availableUntil": "Sep 21 @ 11:59pm",
+    "dueDate": "Sep 21 @ 11:59pm",
+    "points": 20,
+    "timeLimit": 20,
+    "multipleAttempts": true,
+    "questions": 8
+  }
+]

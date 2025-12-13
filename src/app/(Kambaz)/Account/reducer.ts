@@ -12,8 +12,14 @@ interface AccountState {
   currentUser: User | null;
 }
 
+/* 🔹 LOAD FROM localStorage */
+const savedUser =
+  typeof window !== "undefined"
+    ? localStorage.getItem("kambaz_user")
+    : null;
+
 const initialState: AccountState = {
-  currentUser: null,
+  currentUser: savedUser ? JSON.parse(savedUser) : null,
 };
 
 const accountSlice = createSlice({
@@ -22,6 +28,14 @@ const accountSlice = createSlice({
   reducers: {
     setCurrentUser: (state, action: PayloadAction<User | null>) => {
       state.currentUser = action.payload;
+
+      /* 🔹 SAVE TO localStorage */
+      if (typeof window !== "undefined") {
+        localStorage.setItem(
+          "kambaz_user",
+          JSON.stringify(action.payload)
+        );
+      }
     },
   },
 });
