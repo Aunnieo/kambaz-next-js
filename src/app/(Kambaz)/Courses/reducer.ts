@@ -9,17 +9,17 @@ const coursesSlice = createSlice({
   initialState,
   reducers: {
     addNewCourse: (state, { payload: course }) => {
-      const newCourse = { ...course, _id: uuidv4() };
+      const newCourse = { ...course, cid: uuidv4() };
       state.courses = [...state.courses, newCourse] as any;
     },
     deleteCourse: (state, { payload: courseId }) => {
       state.courses = state.courses.filter(
-        (course: any) => course._id !== courseId
+        (course: any) => course.cid !== courseId
       );
     },
     updateCourse: (state, { payload: course }) => {
       state.courses = state.courses.map((c: any) =>
-        c._id === course._id ? course : c
+        c.cid === course.cid ? course : c
       ) as any;
     },
     setCourses: (state, { payload: courses }) => {

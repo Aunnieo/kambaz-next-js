@@ -17,6 +17,7 @@ import {
   Button,
 } from "react-bootstrap";
 import * as db from "../Database";
+import { title } from "process";
 
 export default function Dashboard() {
   const { courses } = useSelector((state: RootState) => state.coursesReducer);
@@ -28,8 +29,8 @@ export default function Dashboard() {
   const dispatch = useDispatch();
 
   const [course, setCourse] = useState<any>({
-    _id: "0",
-    name: "New Course",
+    cid: "0",
+    title: "New Course",
     number: "New Number",
     startDate: "2023-09-10",
     endDate: "2023-12-15",
@@ -53,35 +54,39 @@ export default function Dashboard() {
     )
   );
 
+  const visibleCourses =
+    currentUser.role === "FACULTY" ? courses : enrolledCourses;
+
+console.log("ALL COURSES:", courses);
+
   return (
     <div id="wd-dashboard" className="p-3">
       <h1 id="wd-dashboard-title">Dashboard</h1>
       <hr />
 
       <h2 id="wd-dashboard-published">
-        Your Courses ({enrolledCourses.length})
+        Your Courses ({visibleCourses.length})
       </h2>
       <hr />
 
       <Row xs={1} md={5} className="g-4">
-        {enrolledCourses.map((course) => (
+        {visibleCourses.map((course) => (
           <Col
             key={course.cid}
             className="wd-dashboard-course"
             style={{ width: "300px" }}
           >
-            <Card>
-              <Link
-                href={`/Course/${course.cid}/Home`}
-                className="wd-dashboard-course-link text-decoration-none text-dark"
-              >
+            <Card
+              onClick={() => setCourse(course)}
+              style={{ cursor: "pointer" }}
+            >
+            
                 <CardImg
                   src={`/images/${course.cid}.jpg`}
                   variant="top"
                   width="100%"
-                  height={160}
-                  onError={(e) => (e.currentTarget.src = "/images/default.jpg")}
-                />
+                  height={160}          
+                        />
 
                 <CardBody>
                   <CardTitle className="text-nowrap overflow-hidden">
@@ -97,7 +102,6 @@ export default function Dashboard() {
 
                   <Button variant="primary">Go</Button>
                 </CardBody>
-              </Link>
             </Card>
           </Col>
         ))}
@@ -111,13 +115,14 @@ export default function Dashboard() {
       <button
         className="btn btn-primary float-end"
         onClick={() => dispatch(addNewCourse(course))}
+        
       >
         Add
       </button>
 
       <button
         className="btn btn-danger float-end me-2"
-        onClick={() => dispatch(deleteCourse(course._id))}
+        onClick={() => dispatch(deleteCourse(course.cid))}
       >
         Delete
       </button>
@@ -133,9 +138,9 @@ export default function Dashboard() {
       <br />
 
       <FormControl
-        value={course.name}
+        value={course.title}
         className="mb-2"
-        onChange={(e) => setCourse({ ...course, name: e.target.value })}
+        onChange={(e) => setCourse({ ...course, title: e.target.value })}
       />
 
       <FormControl
