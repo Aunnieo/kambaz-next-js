@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import quizzesData from "../../../Database/quizzes.json";
 
 interface QuizAttempt {
   userId: string;
@@ -61,14 +60,10 @@ interface QuizState {
   quizzes: Quiz[];
 }
 
-
 const initialState: QuizState = {
-  quizzes: (quizzesData as Quiz[]).map(q => ({
-    ...q,
-    questionsList: q.questionsList ?? [],
-    attempts: [],
-  })),
+  quizzes: [],
 };
+
 
 const quizSlice = createSlice({
   name: "quizzes",

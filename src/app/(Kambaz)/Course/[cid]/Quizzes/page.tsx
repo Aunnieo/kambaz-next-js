@@ -43,6 +43,18 @@ export default function QuizzesPage() {
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+  fetch("https://kambaz-backend-4vxh.onrender.com/api/quizzes")
+    .then((res) => res.json())
+    .then((data) => {
+      data.forEach((quiz: any) => {
+        dispatch(addQuiz(quiz));
+      });
+    })
+    .catch((err) => console.error("Failed to load quizzes", err));
+}, [dispatch]);
+
+
   /* ---------------- HELPERS ---------------- */
   function getAvailability(q: any) {
     const now = new Date();

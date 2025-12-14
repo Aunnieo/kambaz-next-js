@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Nav, NavItem, NavLink } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { RootState } from "../store";
 
 export default function AccountNavigation() {
@@ -11,7 +12,12 @@ export default function AccountNavigation() {
     (state: RootState) => state.accountReducer
   );
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
 
+    // ⛔ Prevent hydration mismatch
+  if (!mounted) {
+    return null;
+  }
   const links = currentUser
     ? [{ href: "/Account/Profile", label: "Profile" }]
     : [
