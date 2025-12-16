@@ -1,33 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { ListGroup, ListGroupItem, FormControl } from "react-bootstrap";
 import { BsGripVertical } from "react-icons/bs";
-import Breadcrumb from "../Breadcrumb";
+import { useDispatch, useSelector } from "react-redux";
+
 import ModulesControls from "./ModulesControls";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
 
+
 import {
-  addModule,
   editModule,
   updateModule,
-  deleteModule,
   addLesson,
+  setModules,
   ModuleType,
 } from "./reducer";
 
-import { useSelector, useDispatch } from "react-redux";
+import * as client from "../../client";
 import { RootState } from "../../../store";
 
 export default function ModulesPage() {
-
-  const params = useParams();
-  const rawCid = params.cid;
-  const cid = Array.isArray(rawCid) ? rawCid[0] : rawCid ?? "";
-
-  
+  const { cid } = useParams<{ cid: string }>();
   const dispatch = useDispatch();
 
   const { modules } = useSelector((state: RootState) => state.modulesReducer);
@@ -35,29 +31,64 @@ export default function ModulesPage() {
     (state: RootState) => state.accountReducer
   );
 
-  // Only FACULTY or TA can edit
-  const canEdit =
-    currentUser?.role === "FACULTY" || currentUser?.role === "TA";
+  const canEdit = currentUser?.role === "FACULTY" || currentUser?.role === "TA";
 
   const [moduleName, setModuleName] = useState("");
 
-  // Only modules for this course
-  const filteredModules = modules.filter(
-    (m: ModuleType) => m.course === cid
-  );
+  /* ================================
+     FETCH MODULES (SERVER)
+     ================================ */
+  const fetchModules = async () => {
+    if (!cid) return;
+    const modules = await client.findModulesForCourse(cid);
+    dispatch(setModules(modules));
+  };
+
+  useEffect(() => {
+    fetchModules();
+  }, [cid]);
+
+  /* ================================
+     CREATE MODULE (SERVER)
+     ================================ */
+  const onCreateModuleForCourse = async () => {
+    if (!cid || !moduleName.trim()) return;
+
+    const newModule = { name: moduleName, course: cid };
+    const module = await client.createModuleForCourse(cid, newModule);
+
+    dispatch(setModules([...modules, module]));
+    setModuleName("");
+  };
+
+  /* ================================
+     DELETE MODULE (SERVER)
+     ================================ */
+  const onRemoveModule = async (moduleId: string) => {
+    await client.deleteModule(moduleId);
+    dispatch(setModules(modules.filter((m) => m._id !== moduleId)));
+  };
+
+  /* ================================
+     UPDATE MODULE (SERVER) 
+     ================================ */
+  const onUpdateModule = async (module: ModuleType) => {
+    await client.updateModule(module);
+
+    const updatedModules = modules.map((m) =>
+      m._id === module._id ? module : m
+    );
+
+    dispatch(setModules(updatedModules));
+  };
 
   return (
     <div className="wd-modules">
-      {/* Top Controls: only for Faculty/TA */}
       {canEdit && (
         <ModulesControls
           moduleName={moduleName}
           setModuleName={setModuleName}
-          addModule={() => {
-            if (!moduleName.trim()) return;
-            dispatch(addModule({ name: moduleName, course: cid }));
-            setModuleName("");
-          }}
+          addModule={onCreateModuleForCourse}
         />
       )}
 
@@ -65,7 +96,7 @@ export default function ModulesPage() {
       <br />
 
       <ListGroup id="wd-modules" className="rounded-0">
-        {filteredModules.map((module: ModuleType) => (
+        {modules.map((module: ModuleType, index: number) => (
           <ListGroupItem
             key={module._id}
             className="wd-module p-0 mb-5 fs-5 border-gray"
@@ -75,14 +106,12 @@ export default function ModulesPage() {
               <div className="d-flex align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
 
-                {/* Module Name or Edit Field */}
-               {!module.editing && `Module ${filteredModules.indexOf(module) + 1}: ${module.name}`}
-
+                {!module.editing && `Module ${index + 1}: ${module.name}`}
 
                 {module.editing && canEdit && (
                   <FormControl
                     className="w-50 d-inline-block"
-                    defaultValue={module.name}
+                    value={module.name}
                     onChange={(e) =>
                       dispatch(
                         updateModule({ ...module, name: e.target.value })
@@ -90,21 +119,21 @@ export default function ModulesPage() {
                     }
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
-                        dispatch(
-                          updateModule({ ...module, editing: false })
-                        );
+                        onUpdateModule({
+                          ...module,
+                          editing: false,
+                        });
                       }
                     }}
                   />
                 )}
               </div>
 
-              {/* Control buttons: only Faculty/TA */}
               {canEdit && (
                 <ModuleControlButtons
                   moduleId={module._id}
                   handleEdit={() => dispatch(editModule(module._id))}
-                  handleDelete={() => dispatch(deleteModule(module._id))}
+                  handleDelete={() => onRemoveModule(module._id)}
                   handleAddLesson={() => {
                     const name = prompt("Lesson Name:");
                     if (name?.trim()) {
@@ -116,7 +145,7 @@ export default function ModulesPage() {
             </div>
 
             {/* LESSONS */}
-            {module.lessons && module.lessons.length > 0 && (
+            {module.lessons?.length > 0 && (
               <ListGroup className="wd-lessons rounded-0">
                 {module.lessons.map((lesson) => (
                   <ListGroupItem
@@ -127,8 +156,6 @@ export default function ModulesPage() {
                       <BsGripVertical className="me-2 fs-3" />
                       {lesson.name}
                     </div>
-
-                    {/* Only show lesson controls to Faculty/TA */}
                     {canEdit && <LessonControlButtons />}
                   </ListGroupItem>
                 ))}

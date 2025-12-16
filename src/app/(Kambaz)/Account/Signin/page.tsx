@@ -1,5 +1,6 @@
 "use client";
 
+import * as client from "../client";
 import Link from "next/link";
 import { Form, Button, Card } from "react-bootstrap";
 import { useDispatch } from "react-redux";
@@ -16,13 +17,8 @@ export default function Signin() {
 
   const dispatch = useDispatch();
 
-  const signin = () => {
-    const user = db.users.find(
-      (u: any) =>
-        u.username === credentials.username &&
-        u.password === credentials.password
-    );
-
+  const signin = async () => {
+    const user = await client.signin(credentials);
     if (!user) {
       alert("Invalid username or password");
       return;

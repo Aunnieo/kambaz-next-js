@@ -6,12 +6,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCurrentUser } from "../reducer";
 import { RootState } from "../../store";
 import { Button, FormControl } from "react-bootstrap";
+import * as client from "../client";
 
 export default function Profile() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector(
     (state: RootState) => state.accountReducer
   );
+  const updateProfile = async () => {
+    const updatedProfile = await client.updateUser(profile);
+    dispatch(setCurrentUser(updatedProfile));
+  };
 
   const [profile, setProfile] = useState<any>(null);
 
@@ -24,7 +29,8 @@ export default function Profile() {
     }
   }, [currentUser]);
 
-  const signout = () => {
+  const signout = async () => {
+    await client.signout();
     dispatch(setCurrentUser(null));
     redirect("/Account/Signin");
   };
@@ -73,6 +79,10 @@ export default function Profile() {
         <option value="ADMIN">Admin</option>
       </select>
 
+      <button onClick={updateProfile} className="btn btn-primary w-100 mb-2">
+        {" "}
+        Update{" "}
+      </button>
       {/* Sign Out Button */}
       <Button onClick={signout} className="w-100 mb-2" id="wd-signout-btn">
         Sign out

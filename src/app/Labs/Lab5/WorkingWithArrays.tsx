@@ -1,0 +1,130 @@
+"use client";
+
+import React, { useState } from "react";
+import { FormControl, FormCheck } from "react-bootstrap";
+
+const HTTP_SERVER = process.env.NEXT_PUBLIC_HTTP_SERVER;
+export default function WorkingWithArrays() {
+  const [todoId, setTodoId] = useState("1");
+  const [description, setDescription] = useState("Finish homework");
+  const [completed, setCompleted] = useState(false);
+
+  const API = `${HTTP_SERVER}/lab5/todos`;
+  const [todo, setTodo] = useState({
+    id: "1",
+    title: "NodeJS Assignment",
+    description: "Create a NodeJS server with ExpressJS",
+    due: "2021-09-09",
+    completed: false,
+  });
+  return (
+    <div id="wd-working-with-arrays">
+      <h3>Working with Arrays</h3>
+      <h4>Retrieving Arrays</h4>
+      <a id="wd-retrieve-todos" className="btn btn-primary" href={API}>
+        Get Todos{" "}
+      </a>
+      <hr />
+
+      <h3>Updating an Item in an Array</h3>
+      <a
+        href={`${API}/${todo.id}/title/${todo.title}`}
+        className="btn btn-primary float-end"
+      >
+        Update Todo
+      </a>
+      <FormControl
+        defaultValue={todo.id}
+        className="w-25 float-start me-2"
+        onChange={(e) => setTodo({ ...todo, id: e.target.value })}
+      />
+      <FormControl
+        defaultValue={todo.title}
+        className="w-50 float-start"
+        onChange={(e) => setTodo({ ...todo, title: e.target.value })}
+      />
+
+      <br />
+      <br />
+      <hr />
+
+      <h4>Retrieving an Item from an Array by ID</h4>
+      <a
+        id="wd-retrieve-todo-by-id"
+        className="btn btn-primary float-end"
+        href={`${API}/${todo.id}`}
+      >
+        Get Todo by ID
+      </a>
+      <FormControl
+        id="wd-todo-id"
+        defaultValue={todo.id}
+        className="w-50"
+        onChange={(e) => setTodo({ ...todo, id: e.target.value })}
+      />
+
+      <h3>Filtering Array Items</h3>
+      <a
+        id="wd-retrieve-completed-todos"
+        className="btn btn-primary"
+        href={`${API}?completed=true`}
+      >
+        Get Completed Todos
+      </a>
+      <hr />
+
+      <h3>Creating new Items in an Array</h3>
+      <a
+        id="wd-retrieve-completed-todos"
+        className="btn btn-primary"
+        href={`${API}/create`}
+      >
+        Create Todo
+      </a>
+      <hr />
+
+      <h3>Removing from an Array</h3>
+      <a
+        id="wd-remove-todo"
+        className="btn btn-primary float-end"
+        href={`${API}/${todo.id}/delete`}
+      >
+        Remove Todo with ID = {todo.id}{" "}
+      </a>
+      <FormControl
+        defaultValue={todo.id}
+        className="w-50"
+        onChange={(e) => setTodo({ ...todo, id: e.target.value })}
+      />
+      <hr />
+
+      <FormControl
+        className="mb-2"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Todo Description"
+      />
+
+      <FormCheck
+        className="mb-2"
+        label="Completed"
+        checked={completed}
+        onChange={(e) => setCompleted(e.target.checked)}
+      />
+      <a
+        className="btn btn-primary me-2"
+        href={`${HTTP_SERVER}/lab5/todos/${todoId}/description/${description}`}
+      >
+        Update Description
+      </a>
+
+      <a
+        className="btn btn-success"
+        href={`${HTTP_SERVER}/lab5/todos/${todoId}/completed/${completed}`}
+      >
+        Update Completed
+      </a>
+      <hr />
+    </div>
+  );
+}

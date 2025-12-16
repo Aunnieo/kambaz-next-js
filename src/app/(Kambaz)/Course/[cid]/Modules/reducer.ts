@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { modules as dbModules } from "../../../Database";
 import { v4 as uuidv4 } from "uuid";
 
 export interface Lesson {
@@ -14,7 +13,7 @@ export interface ModuleType {
   description: string;
   course: string;
   lessons: Lesson[];
-  editing?: boolean; // used when renaming module
+  editing?: boolean;
 }
 
 interface ModulesState {
@@ -22,16 +21,18 @@ interface ModulesState {
 }
 
 const initialState: ModulesState = {
-  modules: dbModules.map((m: any) => ({
-    ...m,
-    editing: false,
-  })),
+  modules: [], 
 };
 
 const modulesSlice = createSlice({
   name: "modules",
   initialState,
   reducers: {
+    // ✅ REQUIRED BY INSTRUCTIONS
+    setModules: (state, action: PayloadAction<ModuleType[]>) => {
+      state.modules = action.payload;
+    },
+
     addModule: (
       state,
       action: PayloadAction<{ name: string; course: string }>
@@ -47,7 +48,9 @@ const modulesSlice = createSlice({
     },
 
     deleteModule: (state, action: PayloadAction<string>) => {
-      state.modules = state.modules.filter((m) => m._id !== action.payload);
+      state.modules = state.modules.filter(
+        (m) => m._id !== action.payload
+      );
     },
 
     updateModule: (state, action: PayloadAction<ModuleType>) => {
@@ -70,16 +73,16 @@ const modulesSlice = createSlice({
       state.modules = state.modules.map((m) =>
         m._id === moduleId
           ? {
-              ...m,
-              lessons: [
-                ...m.lessons,
-                {
-                  _id: uuidv4(),
-                  name,
-                  description: "",
-                },
-              ],
-            }
+            ...m,
+            lessons: [
+              ...m.lessons,
+              {
+                _id: uuidv4(),
+                name,
+                description: "",
+              },
+            ],
+          }
           : m
       );
     },
@@ -87,6 +90,7 @@ const modulesSlice = createSlice({
 });
 
 export const {
+  setModules,      
   addModule,
   deleteModule,
   updateModule,
