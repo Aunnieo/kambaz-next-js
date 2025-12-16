@@ -14,7 +14,8 @@ export default function Profile() {
     (state: RootState) => state.accountReducer
   );
   const updateProfile = async () => {
-    const updatedProfile = await client.updateUser(profile);
+    const updatedProfile = await client.updateProfile(profile);
+
     dispatch(setCurrentUser(updatedProfile));
   };
 
